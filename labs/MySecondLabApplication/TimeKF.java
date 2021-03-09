@@ -68,36 +68,27 @@ public class TimeKF {
     }
 
     @Override
-    public String toString() {
-        String output = "";
-        if (this.hours < 10L) {
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String;)Ljava / lang / String;,output);
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String; J)Ljava / lang / String;,
-            output, this.hours);
-        } else {
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String; J)Ljava / lang / String;,
-            output, this.hours);
+        public String toString() {
+            String output = "";
+            if (this.myHours < 10L) {
+                output += "0"+myHours;
+            } else {
+                output += myHours;
+            }
+            output += ":";
+            if (this.myMinutes < 10L) {
+                output += "0"+ myMinutes;
+            } else {
+                output += myMinutes;
+            }
+            output += ":";
+            if (this.mySeconds < 10L) {
+                output += "0"+mySeconds;
+            } else {
+                output += this.mySeconds;
+            }
+            return output;
         }
-        output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String;)Ljava / lang / String;,output);
-        if (this.minutes < 10L) {
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String;)Ljava / lang / String;,output);
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String; J)Ljava / lang / String;,
-            output, this.minutes);
-        } else {
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String; J)Ljava / lang / String;,
-            output, this.minutes);
-        }
-        output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String;)Ljava / lang / String;,output);
-        if (this.seconds < 10L) {
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String;)Ljava / lang / String;,output);
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String; J)Ljava / lang / String;,
-            output, this.seconds);
-        } else {
-            output = invokedynamic(makeConcatWithConstants:(Ljava / lang / String; J)Ljava / lang / String;,
-            output, this.seconds);
-        }
-        return output;
-    }
 
     private static TimeKF _add(final TimeKF first, final TimeKF second) {
         long seconds = 0L;
@@ -182,10 +173,10 @@ public class TimeKF {
         final TimeKF firstTime = new TimeKF(12L, 0L, 1L);
         final TimeKF secondTime = new TimeKF(12L, 0L, 1L);
         final TimeKF thirdTime = new TimeKF(new Date(10, 12, 2003, 23, 59, 59));
-        System.out.println(invokedynamic(makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;, thirdTime.toString()));
-        System.out.println(invokedynamic(makeConcatWithConstants:(Lcom/company/TimeKF;)Ljava/lang/String;, secondTime.add(thirdTime)));
-        System.out.println(invokedynamic(makeConcatWithConstants:(Lcom/company/TimeKF;)Ljava/lang/String;, new TimeKF(0L, 0L, 0L).substract(new TimeKF(0L, 0L, 1L))));
-        System.out.println(invokedynamic(makeConcatWithConstants:(Lcom/company/TimeKF;)Ljava/lang/String;, addTwoObjects(new TimeKF(10L, 10L, 10L), new TimeKF(10L, 30L, 30L))));
-        System.out.println(invokedynamic(makeConcatWithConstants:(Lcom/company/TimeKF;)Ljava/lang/String;, substractTwoObjects(new TimeKF(20L, 10L, 10L), new TimeKF(10L, 50L, 5L))));
+        System.out.println(thirdTime.toString());
+        System.out.println(secondTime.add(thirdTime));
+        System.out.println(new TimeKF(0L, 0L, 0L).substract(new TimeKF(0L, 0L, 1L)));
+        System.out.println(addTwoObjects(new TimeKF(10L, 10L, 10L), new TimeKF(10L, 30L, 30L)));
+        System.out.println(substractTwoObjects(new TimeKF(20L, 10L, 10L), new TimeKF(10L, 50L, 5L)));
     }
 }
